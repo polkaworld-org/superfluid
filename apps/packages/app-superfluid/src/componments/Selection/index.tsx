@@ -14,6 +14,7 @@ import {withApi} from '@polkadot/react-api';
 import Swap from './Swap';
 import Pool from './Pool';
 import translate from '../../translate';
+import './style.css'
 
 interface Props extends ApiProps, I18nProps {
   basePath: string;
