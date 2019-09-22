@@ -10,11 +10,11 @@ const options = [
     image: {avatar: true, src: 'https://guide.kusama.network/en/latest/img/Kusama_symbol_color.png'}
   },
   {
-    text: 'BTC',
+    text: 'WOOD',
     value: 2,
     image: {
       avatar: true,
-      src: 'https://cdn3.iconfinder.com/data/icons/currency-and-cryptocurrency-signs-1/64/cryptocurrency_blockchain_Bitcoin_BTC-512.png'
+      src: 'http://images.clipartpanda.com/log-clipart-205907-Wood-Log-color-png.png'
     }
   }
 ]
