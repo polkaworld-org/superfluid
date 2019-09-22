@@ -1,4 +1,5 @@
 # Superfluid Platform
+
 ![](https://github.com/polkaworld-org/superfluid/raw/master/apps/packages/app-superfluid/src/images/logo.jpg)
 By Team Pacman
 ## Descriptions
@@ -17,7 +18,7 @@ By Team Pacman
 $ cd pwc-node
 $ cargo build --release
 $ cargo build -p market-making-tool --release
-$ ./target/release/pwc-node--dev
+$ ./target/release/pwc-node --dev
 $ ./target/release/market-making-tool run --addr 127.0.0.1:9944
 $ cd apps
 $ yarn

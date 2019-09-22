@@ -46,12 +46,20 @@ const defaultState = {
 class Swap extends TxComponent<Props, State> {
   public state: State = defaultState
 
-  async componentDidMount() {
+  async componentWillMount() {
     const {api} = this.props
     let res = await api.query.superfluid.inherentAsset()
     const inherentAssetId: number = Number(res.toString())
+    
     this.setState({inherentAssetId})
-    // this.setState({ outputAmount: new BN(0) })
+    _.delay(async ()=>{
+      let banlance = await api.query.superfluid.balances([inherentAssetId, this.props.accountId])
+      let inputBalance = banlance.toString()
+      console.log(inputBalance,'============')
+      this.setState({
+        inputBalance
+      })
+    },500)
   }
 
   componentWillReceiveProps(nextProps: Props) {
@@ -142,12 +150,26 @@ class Swap extends TxComponent<Props, State> {
                 params={[accountId, inputAsset, outputAsset, inputAmount, outputAmount]}
                 tx='superfluid.swapAssetsWithExactInput'
                 ref={this.button}
+                onSuccess={this.onSuccess}
               />
             </Button.Group>
           </div>
         </div>
       </section>
     );
+  }
+
+  private onSuccess = async (result: any) => {
+    // console.log(result)
+    const {accountId, api} = this.props
+    const {outputAsset, inputAsset} = this.state
+    let inputRes = await api.query.superfluid.balances([inputAsset, accountId])
+    let outputRes = await api.query.superfluid.balances([outputAsset, accountId])
+    this.setState({
+      outputBalance:outputRes,
+      inputBalance:inputRes,
+      
+    })
   }
 
   // 获得费率
