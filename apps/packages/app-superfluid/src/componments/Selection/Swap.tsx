@@ -114,7 +114,10 @@ class Swap extends TxComponent<Props, State> {
             </div>
 
             <div className='ui--row'>
-              <Summary className='small'>Balance : {inputBalance ? inputBalance.toString() : ''}</Summary>
+              <Summary style={{
+                color: 'black',
+                fontWeight: 'bold'
+              }} className='small'>Balance : {inputBalance ? inputBalance.toString() : ''}</Summary>
             </div>
 
             <div className='ui--row' style={{
@@ -140,7 +143,10 @@ class Swap extends TxComponent<Props, State> {
             </div>
 
             <div className='ui--row'>
-              <Summary className='small'> Balance : {outputBalance ? outputBalance.toString() : ''}</Summary>
+              <Summary style={{
+                color: 'black',
+                fontWeight: 'bold'
+              }} className='small'> Balance : {outputBalance ? outputBalance.toString() : ''}</Summary>
             </div>
             <Button.Group isCentered>
               <TxButton
