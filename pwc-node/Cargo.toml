@@ -100,4 +100,4 @@ name = 'pwc-node'
 version = '2.0.0'
 
 [workspace]
-members = ['runtime']
+members = ['runtime', 'market-making-tool']

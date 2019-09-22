@@ -1,9 +1,9 @@
 use babe_primitives::AuthorityId as BabeId;
 use grandpa_primitives::AuthorityId as GrandpaId;
-use primitives::{Pair, Public};
+use primitives::{sr25519, Pair, Public};
 use pwc_node_runtime::{
     AccountId, BabeConfig, BalancesConfig, GenesisConfig, GrandpaConfig, IndicesConfig, SudoConfig,
-    SystemConfig, WASM_BINARY,
+    SuperfluidConfig, SystemConfig, WASM_BINARY,
 };
 use substrate_service;
 
@@ -22,6 +22,12 @@ pub enum Alternative {
     Development,
     /// Whatever the current runtime is, with simple Alice/Bob auths.
     LocalTestnet,
+}
+
+fn account_key(s: &str) -> AccountId {
+    sr25519::Pair::from_string(&format!("//{}", s), None)
+        .expect("static values are valid; qed")
+        .public()
 }
 
 /// Helper function to generate a crypto pair from seed
@@ -146,6 +152,17 @@ fn testnet_genesis(
                 .iter()
                 .map(|x| (x.2.clone(), 1))
                 .collect(),
+        }),
+        uniswap: Some(SuperfluidConfig {
+            owner: account_key("Bob"),
+            fee_rate: 1,
+            assets: vec![
+                (account_key("Alice"), 100000),
+                (account_key("Alice"), 100000),
+                (account_key("Alice"), 100000),
+                (account_key("Alice"), 100000),
+                (account_key("Alice"), 100000),
+            ],
         }),
     }
 }

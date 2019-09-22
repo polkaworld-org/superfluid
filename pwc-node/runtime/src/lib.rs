@@ -13,9 +13,10 @@ use client::{
     block_builder::api::{self as block_builder_api, CheckInherentsResult, InherentData},
     impl_runtime_apis, runtime_api as client_api,
 };
+use core::convert::TryInto;
 use grandpa::fg_primitives::{self, ScheduledChange};
 use grandpa::{AuthorityId as GrandpaId, AuthorityWeight as GrandpaWeight};
-use primitives::{crypto::key_types, OpaqueMetadata};
+use primitives::{crypto::key_types, crypto::UncheckedInto, OpaqueMetadata};
 use rstd::prelude::*;
 use sr_primitives::traits::{
     BlakeTwo256, Block as BlockT, ConvertInto, DigestFor, NumberFor, StaticLookup, Verify,
@@ -63,8 +64,7 @@ pub type Hash = primitives::H256;
 /// Digest item type.
 pub type DigestItem = generic::DigestItem<Hash>;
 
-/// Used for the module template in `./template.rs`
-mod template;
+pub mod uniswap;
 
 /// Opaque types. These are used by the CLI to instantiate machinery that don't need to know
 /// the specifics of the runtime. They can then be made to be agnostic over specific formats
@@ -249,32 +249,41 @@ impl balances::Trait for Runtime {
     type WeightToFee = ConvertInto;
 }
 
+//impl assets::Trait for Runtime {
+//    type Event = Event;
+//    type Balance = Balance;
+//    type AssetId = u32;
+//}
+
 impl sudo::Trait for Runtime {
     type Event = Event;
     type Proposal = Call;
 }
 
-/// Used for the module template in `./template.rs`
-impl template::Trait for Runtime {
+impl uniswap::Trait for Runtime {
     type Event = Event;
+    type Balance = Balance;
+    type AssetId = u64;
+    type ExchangeAddress = uniswap::ExchangeAddress<Self>;
+    type FeeRate = u64;
 }
 
 construct_runtime!(
-	pub enum Runtime where
-		Block = Block,
-		NodeBlock = opaque::Block,
-		UncheckedExtrinsic = UncheckedExtrinsic
-	{
-		System: system::{Module, Call, Storage, Config, Event},
-		Timestamp: timestamp::{Module, Call, Storage, Inherent},
-		Babe: babe::{Module, Call, Storage, Config, Inherent(Timestamp)},
-		Grandpa: grandpa::{Module, Call, Storage, Config, Event},
-		Indices: indices::{default, Config<T>},
-		Balances: balances,
-		Sudo: sudo,
-		// Used for the module template in `./template.rs`
-		TemplateModule: template::{Module, Call, Storage, Event<T>},
-	}
+        pub enum Runtime where
+                Block = Block,
+                NodeBlock = opaque::Block,
+                UncheckedExtrinsic = UncheckedExtrinsic
+        {
+            System: system::{Module, Call, Storage, Config, Event},
+            Timestamp: timestamp::{Module, Call, Storage, Inherent},
+            Babe: babe::{Module, Call, Storage, Config, Inherent(Timestamp)},
+            Grandpa: grandpa::{Module, Call, Storage, Config, Event},
+            Indices: indices::{default, Config<T>},
+            Balances: balances,
+            //Assets: assets,
+            Sudo: sudo,
+            Superfluid: uniswap::{Module, Call, Storage, Config<T>, Event<T>},
+        }
 );
 
 /// The address format for describing accounts.
