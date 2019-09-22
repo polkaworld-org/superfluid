@@ -1,5 +1,6 @@
 # Superfluid Platform
-![](https://github.com/Satoshi-Kusumoto/pwc/raw/master/apps/packages/app-superfluid/src/images/logo.jpg)
+
+![](https://github.com/polkaworld-org/superfluid/raw/master/apps/packages/app-superfluid/src/images/logo.jpg)
 By Team Pacman
 ## Descriptions
 - Superfluid platform is a next generation DeFi platform developed using Substrate.  
@@ -17,9 +18,8 @@ By Team Pacman
 $ cd pwc-node
 $ cargo build --release
 $ cargo build -p market-making-tool --release
-$ ./target/release/pwc-node--dev
+$ ./target/release/pwc-node --dev
 $ ./target/release/market-making-tool run --addr 127.0.0.1:9944
-$ 
 $ cd apps
 $ yarn
 $ yarn run start
