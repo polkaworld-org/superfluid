@@ -62,6 +62,10 @@ class Swap extends TxComponent<Props, State> {
     },500)
   }
 
+  async componentDidMount() {
+    this.selectOutputAsset(1)
+  }
+
   componentWillReceiveProps(nextProps: Props) {
     const {accountId} = this.props
     if (nextProps && nextProps.accountId !== accountId) {
