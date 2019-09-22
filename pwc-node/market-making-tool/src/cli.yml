@@ -1,0 +1,10 @@
+name: market-making-tool
+author: "Yuanchao Sun <yuanchao.sun@gmail.com>"
+subcommands:
+  - run:
+      args:
+        - addr:
+            long: addr
+            help: The websocket address of superfluid chain.
+            takes_value: true
+            required: true

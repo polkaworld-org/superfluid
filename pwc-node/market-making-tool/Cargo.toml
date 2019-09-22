@@ -1,0 +1,49 @@
+[package]
+name = "market-making-tool"
+version = "0.1.0"
+authors = ["Yuanchao Sun <yuanchao.sun@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "~2.32", features = ["yaml"] }
+tokio = { version = "0.1.11" }
+url = "1.7"
+substrate-subxt = { git="https://github.com/en/substrate-subxt.git", branch="superfluid" }
+futures = "0.1.17"
+futures03 = { package = "futures-preview", version = "=0.3.0-alpha.17", features = ["compat"] }
+
+[dependencies.pwc-node-runtime]
+path = '../runtime'
+
+[dependencies.codec]
+package = 'parity-scale-codec'
+version = '1.0.0'
+
+[dependencies.srml-system]
+default_features = false
+git = 'https://github.com/paritytech/substrate.git'
+package = 'srml-system'
+rev = '7276eeab7da8b78f007a99129aad6e89e9d588c7'
+
+[dependencies.srml-balances]
+git = 'https://github.com/paritytech/substrate.git'
+package = 'srml-balances'
+rev = '7276eeab7da8b78f007a99129aad6e89e9d588c7'
+
+[dependencies.keyring]
+git = 'https://github.com/paritytech/substrate.git'
+package = 'substrate-keyring'
+rev = '7276eeab7da8b78f007a99129aad6e89e9d588c7'
+
+[dependencies.runtime-primitives]
+git = 'https://github.com/paritytech/substrate.git'
+package = 'sr-primitives'
+rev = '7276eeab7da8b78f007a99129aad6e89e9d588c7'
+
+[dependencies.substrate-primitives]
+default_features = false
+git = 'https://github.com/paritytech/substrate.git'
+package = 'substrate-primitives'
+rev = '7276eeab7da8b78f007a99129aad6e89e9d588c7'
