@@ -57,7 +57,6 @@ class Selection extends React.PureComponent<Props, State> {
     const { basePath, isSubstrateV2 } = this.props;
     const { items } = this.state;
     const hidden = isSubstrateV2 ? [] : ['constants'];
-
     return (
       <>
         <header>

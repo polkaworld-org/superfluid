@@ -86,7 +86,12 @@ export default class Api extends React.PureComponent<Props, State> {
       provider,
       signer,
       typesChain,
-      typesSpec
+      typesSpec,
+      types:{
+        "FeeRate": "u64",
+        "AssetId": "u64",
+        "Balance": "u128"
+      }
     });
   }
 

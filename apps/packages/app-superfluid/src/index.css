@@ -1,0 +1,11 @@
+.uniswap-content {
+  background: linear-gradient(to right, rgba(104, 37, 255, 0.5), rgb(109, 213, 250), rgb(255, 255, 255));
+  margin: 0 -2rem
+}
+
+.container-content {
+  display: block;
+  max-width: 40rem;
+  width: 90%;
+  margin: 70px auto;
+}

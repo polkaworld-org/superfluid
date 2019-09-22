@@ -85,7 +85,6 @@ class Modules extends TxComponent<Props, State> {
     this.setState(
       (prevState: State): Pick<State, never> => {
         const { key = prevState.key, values = prevState.values } = newState;
-
         const areParamsValid = (): boolean => {
           return values.reduce(
             (isValid: boolean, value): boolean => (

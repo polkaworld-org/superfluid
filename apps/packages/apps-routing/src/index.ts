@@ -25,7 +25,7 @@ import sudo from './sudo';
 import toolbox from './toolbox';
 import transfer from './transfer';
 import treasury from './treasury';
-import uniswap from './uniswap';
+import superfluid from './superfluid'
 
 const routes: Routes = appSettings.uiMode === 'light'
   ? ([] as Routes).concat(
@@ -35,7 +35,7 @@ const routes: Routes = appSettings.uiMode === 'light'
     addressbook,
     claims,
     transfer,
-    uniswap,
+    superfluid,
     null,
     staking,
     democracy,
@@ -51,7 +51,7 @@ const routes: Routes = appSettings.uiMode === 'light'
     addressbook,
     claims,
     transfer,
-    uniswap,
+    superfluid,
     null,
     staking,
     democracy,

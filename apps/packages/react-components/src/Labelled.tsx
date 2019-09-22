@@ -46,7 +46,7 @@ const Wrapper = styled.div`
   }
 
   &:not(.label-small) {
-    padding-left: 2rem;
+    // padding-left: 2rem;
 
     > label,
     .labelExtra {

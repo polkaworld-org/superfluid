@@ -26,9 +26,9 @@ function AccountSelector ({ className, onChange }: Props): React.ReactElement<Pr
         type='account'
       />
       <div className='medium'>
-        <Bubble color='teal' icon='address card' label='index'>
+        {/* <Bubble color='teal' icon='address card' label='index'>
           <AccountIndex params={accountId} />
-        </Bubble>
+        </Bubble> */}
         <Bubble color='yellow' icon='adjust' label='balance'>
           <Balance params={accountId} />
         </Bubble>

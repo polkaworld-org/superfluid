@@ -3,25 +3,24 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Route } from '@polkadot/apps-routing/types';
-import { ApiProps } from '@polkadot/react-api/types';
-import { I18nProps } from '@polkadot/react-components/types';
-import { SIDEBAR_MENU_THRESHOLD } from '../constants';
+import {Route} from '@polkadot/apps-routing/types';
+import {ApiProps} from '@polkadot/react-api/types';
+import {I18nProps} from '@polkadot/react-components/types';
+import {SIDEBAR_MENU_THRESHOLD} from '../constants';
 
 import './SideBar.css';
 
 import React from 'react';
 import styled from 'styled-components';
-import { Responsive } from 'semantic-ui-react';
+import {Responsive} from 'semantic-ui-react';
 import routing from '@polkadot/apps-routing';
-import { withCalls, withMulti } from '@polkadot/react-api';
-import { Button, ChainImg, Icon, Menu, media } from '@polkadot/react-components';
-import { classes } from '@polkadot/react-components/util';
-import { BestNumber, Chain } from '@polkadot/react-query';
+import {withCalls, withMulti} from '@polkadot/react-api';
+import {Button, ChainImg, Icon, media, Menu} from '@polkadot/react-components';
+import {classes} from '@polkadot/react-components/util';
+import {BestNumber, Chain} from '@polkadot/react-query';
 
 import translate from '../translate';
 import Item from './Item';
-import NodeInfo from './NodeInfo';
 
 interface Props extends ApiProps, I18nProps {
   className?: string;
@@ -40,7 +39,7 @@ interface State {
 class SideBar extends React.PureComponent<Props, State> {
   public state: State;
 
-  public constructor (props: Props) {
+  public constructor(props: Props) {
     super(props);
 
     // setup modals for each of the actual modal routes
@@ -76,15 +75,10 @@ class SideBar extends React.PureComponent<Props, State> {
             <div className='apps-SideBar-Scroll'>
               {this.renderLogo()}
               {this.renderRoutes()}
-              <Menu.Divider hidden />
+              <Menu.Divider hidden/>
               {this.renderGithub()}
               {this.renderWiki()}
-              <Menu.Divider hidden />
-              {
-                isCollapsed
-                  ? undefined
-                  : <NodeInfo />
-              }
+              <Menu.Divider hidden/>
             </div>
             {this.renderCollapse()}
           </Menu>
@@ -99,8 +93,8 @@ class SideBar extends React.PureComponent<Props, State> {
     );
   }
 
-  private renderCollapse (): React.ReactNode {
-    const { isCollapsed } = this.props;
+  private renderCollapse(): React.ReactNode {
+    const {isCollapsed} = this.props;
 
     return (
       <Responsive
@@ -117,28 +111,28 @@ class SideBar extends React.PureComponent<Props, State> {
     );
   }
 
-  private renderLogo (): React.ReactNode {
-    const { api, isApiReady } = this.props;
+  private renderLogo(): React.ReactNode {
+    const {api, isApiReady} = this.props;
 
     return (
       <div className='apps--SideBar-logo'>
-        <ChainImg />
+        <ChainImg/>
         <div className='info'>
-          <Chain className='chain' />
+          <Chain className='chain'/>
           {isApiReady &&
-            <div className='runtimeVersion'>version {api.runtimeVersion.specVersion.toNumber()}</div>
+          <div className='runtimeVersion'>version {api.runtimeVersion.specVersion.toNumber()}</div>
           }
-          <BestNumber label='#' />
+          <BestNumber label='#'/>
         </div>
       </div>
     );
   }
 
-  private renderModals (): React.ReactNode {
-    const { modals } = this.state;
+  private renderModals(): React.ReactNode {
+    const {modals} = this.state;
     const filtered = routing.routes.filter((route): any => route && route.Modal) as Route[];
 
-    return filtered.map(({ name, Modal }): React.ReactNode => (
+    return filtered.map(({name, Modal}): React.ReactNode => (
       Modal && modals[name]
         ? (
           <Modal
@@ -146,12 +140,12 @@ class SideBar extends React.PureComponent<Props, State> {
             onClose={this.closeModal(name)}
           />
         )
-        : <div key={name} />
+        : <div key={name}/>
     ));
   }
 
-  private renderRoutes (): React.ReactNode {
-    const { handleResize, isCollapsed } = this.props;
+  private renderRoutes(): React.ReactNode {
+    const {handleResize, isCollapsed} = this.props;
 
     return routing.routes.map((route, index): React.ReactNode => (
       route
@@ -176,7 +170,7 @@ class SideBar extends React.PureComponent<Props, State> {
     ));
   }
 
-  private renderGithub (): React.ReactNode {
+  private renderGithub(): React.ReactNode {
     return (
       <Menu.Item className='apps--SideBar-Item'>
         <a
@@ -185,13 +179,13 @@ class SideBar extends React.PureComponent<Props, State> {
           rel='noopener noreferrer'
           target='_blank'
         >
-          <Icon name='github' /><span className='text'>GitHub</span>
+          <Icon name='github'/><span className='text'>GitHub</span>
         </a>
       </Menu.Item>
     );
   }
 
-  private renderWiki (): React.ReactNode {
+  private renderWiki(): React.ReactNode {
     return (
       <Menu.Item className='apps--SideBar-Item'>
         <a
@@ -200,7 +194,7 @@ class SideBar extends React.PureComponent<Props, State> {
           rel='noopener noreferrer'
           target='_blank'
         >
-          <Icon name='book' /><span className='text'>Wiki</span>
+          <Icon name='book'/><span className='text'>Wiki</span>
         </a>
       </Menu.Item>
     );
@@ -208,7 +202,7 @@ class SideBar extends React.PureComponent<Props, State> {
 
   private closeModal = (name: string): () => void => {
     return (): void => {
-      this.setState(({ modals }): State => ({
+      this.setState(({modals}): State => ({
         modals: {
           ...modals,
           [name]: false
@@ -219,7 +213,7 @@ class SideBar extends React.PureComponent<Props, State> {
 
   private openModal = (name: string): () => void => {
     return (): void => {
-      this.setState(({ modals }): State => ({
+      this.setState(({modals}): State => ({
         modals: {
           ...modals,
           [name]: true

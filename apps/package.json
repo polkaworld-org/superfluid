@@ -41,6 +41,7 @@
     "gh-pages": "^2.1.1",
     "html-loader": "^0.5.5",
     "markdown-loader": "^5.1.0",
+    "node-sass": "^4.12.0",
     "postcss": "^7.0.13",
     "postcss-clean": "^1.1.0",
     "postcss-flexbugs-fixes": "^4.1.0",
@@ -50,6 +51,13 @@
     "postcss-sass": "^0.4.1",
     "postcss-simple-vars": "^5.0.0",
     "precss": "^4.0.0",
+    "sass-loader": "^8.0.0",
     "source-map-explorer": "^2.0.1"
+  },
+  "dependencies": {
+    "decimal.js": "^10.2.0",
+    "gatsby-plugin-sass": "^2.1.14",
+    "lodash": "^4.17.15",
+    "react-bulma-components": "2.3.0"
   }
 }

@@ -47,7 +47,7 @@
 
 .ui--grid > div.large,
 .ui--row > div.large {
-  flex: 0 75%;
+  flex: 0 100%;
 }
 
 .ui--grid > div.medium,

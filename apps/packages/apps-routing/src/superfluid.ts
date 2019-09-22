@@ -2,13 +2,13 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Routes } from './types';
+import {Routes} from './types';
 
-import Uniswap from '@polkadot/app-uniswap';
+import Superfluid from '@polkadot/app-superfluid';
 
 export default ([
   {
-    Component: Uniswap,
+    Component: Superfluid,
     display: {
       isHidden: false,
       needsAccounts: true,
@@ -17,9 +17,9 @@ export default ([
       ]
     },
     i18n: {
-      defaultValue: 'Uniswap'
+      defaultValue: 'Superfluid'
     },
     icon: 'exchange',
-    name: 'Uniswap'
+    name: 'superfluid'
   }
 ] as Routes);

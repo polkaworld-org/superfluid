@@ -80,10 +80,38 @@ class InputNumber extends React.PureComponent<Props, State> {
     InputNumber.units = units;
   }
 
-  public static getDerivedStateFromProps ({ isDisabled, isSi, defaultValue = '0' }: Props): Partial<State> | null {
+  // componentWillReceiveProps(nextProps:Props){
+  //   const {value} = this.props
+  //   const stateValue = this.state.value
+  //   debugger
+  //   if(nextProps.value && nextProps.value !== value && nextProps.value !== stateValue) {
+  //     const valueBN = this.inputValueToBn(nextProps.value.toString());
+  //     const isValid = this.isValidNumber(valueBN);
+  //     this.setState({ isValid, value: nextProps.value.toString(), valueBN });
+  //   }
+  // }
+
+  public static getDerivedStateFromProps ({ isDisabled, isSi, defaultValue = '0', value, valueBN }: Props, state:State): Partial<State> | null {
     if (!isDisabled || !isSi) {
       return null;
     }
+    
+    // const stateValue = state.value
+    // if(value === undefined) { 
+    //   return {
+    //     value: formatBalance(defaultValue, false),
+    //     valueBN: new BN(10),
+    //     siUnit: formatBalance.calcSi(defaultValue.toString(), formatBalance.getDefaults().decimals).value
+    //   };
+    // }
+    // if(value !== state.value || !valueBN.eq(state.valueBN)) {
+    //   console.log(value,'==========+++=++!')
+    //   return {
+    //     value : value,
+    //     valueBN: valueBN
+    //   }
+    // }
+
 
     return {
       value: formatBalance(defaultValue, false),
@@ -187,6 +215,7 @@ class InputNumber extends React.PureComponent<Props, State> {
   }
 
   private onChange = (value: string): void => {
+    console.log(value)
     const { bitLength, onChange } = this.props;
     const { siUnit } = this.state;
 

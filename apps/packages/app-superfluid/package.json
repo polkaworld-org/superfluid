@@ -1,12 +1,12 @@
 {
-  "name": "@polkadot/app-uniswap",
-  "version": "0.0.1",
-  "description": "A Uniswap build with substract",
+  "name": "@polkadot/app-superfluid",
+  "version": "0.2.0-beta.34",
+  "description": "A basic app that shows the uniswap protocol implementation by using Substrate.",
   "main": "index.js",
   "scripts": {},
-  "author": "Pacman <jacogr@gmail.com>",
+  "author": "Pacman",
   "maintainers": [
-    "Jaco Greeff <jacogr@gmail.com>"
+    "Pacman"
   ],
   "license": "Apache-2.0",
   "dependencies": {

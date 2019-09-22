@@ -178,8 +178,11 @@
   /* break out of the wrapping main padding */
   margin: -1em -2em 0;
   overflow-x: scroll;
-  padding: 2em 2em 0 2em;
-  transition: padding-left 0.2s linear 0.4s;
+  /*transition: padding-left 0.2s linear 0.4s;*/
+  font-size: 1.15rem;
+  border-radius: 3rem;
+  background-color: rgba(41, 44, 47,0.2);
+  border-bottom: none;
 
   &::-webkit-scrollbar {
     display: none;
@@ -190,11 +193,24 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0);
     border: none;
     top: -1px;
+    color: white;
+    width: 12rem;
+    text-align: center;
+    display: inline-block;
 
     &.active {
       background: none; /* #fafafa */;
-      border-bottom: 2px solid #db2828;
-    }
+      /*border-bottom: 2px solid #db2828;*/
+      background-color: rgba(32, 33, 36,0.5);
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 8px 0px;
+      box-sizing: border-box;
+      font-weight: 500;
+      border-radius: 3rem !important;
+      border-width: 1px;
+      border-color: rgba(32, 33, 36,0.5);
+      border-image: initial;
+      color: white;
+     }
   }
 }
 

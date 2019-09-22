@@ -6,7 +6,7 @@ import BN from 'bn.js';
 import React from 'react';
 import { Button, InputAddress, InputBalance, TxButton, TxComponent } from '@polkadot/react-components';
 
-import Summary from './Summary';
+import Summary from '../Summary';
 
 interface Props {
   accountId?: string;
@@ -16,17 +16,17 @@ interface State {
   recipientId?: string;
 }
 
-export default class Transfer extends TxComponent<Props, State> {
+export default class Convert extends TxComponent<Props, State> {
   public state: State = {};
 
   public render (): React.ReactNode {
-    const { accountId } = this.props;
-    const { amount, recipientId } = this.state;
+    // const { accountId } = this.props;
+    // const { amount, recipientId } = this.state;
 
     return (
       <section>
-        <h1>transfer</h1>
-        <div className='ui--row'>
+        <h1>Send</h1>
+        {/* <div className='ui--row'>
           <div className='large'>
             <InputAddress
               label='recipient address for this transfer'
@@ -50,7 +50,7 @@ export default class Transfer extends TxComponent<Props, State> {
             </Button.Group>
           </div>
           <Summary className='small'>Make a transfer from any account you control to another account. Transfer fees and per-transaction fees apply and will be calculated upon submission.</Summary>
-        </div>
+        </div> */}
       </section>
     );
   }

@@ -37,7 +37,7 @@
     z-index: 300;
 
     &.collapsed {
-      width: 4.2rem;
+      width: 0;
     }
 
     &.expanded {
@@ -122,7 +122,7 @@
     }
 
     .apps--SideBar-collapse {
-      background: #3f3f3f;
+      /*background: #3f3f3f;*/
       bottom: 0;
       left: 0;
       padding: 0.75rem 0 .75rem 0.65rem;
