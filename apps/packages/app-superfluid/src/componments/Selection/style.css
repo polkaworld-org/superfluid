@@ -27,6 +27,8 @@
   border-color: transparent !important;
   box-shadow: none !important;
   border-width: 0 !important;
+  height: 55px;
+  margin: 0 !important;
 
   &.active{
      border-radius: 2rem !important;
