@@ -1,0 +1,16 @@
+{
+  "name": "@polkadot/app-uniswap",
+  "version": "0.0.1",
+  "description": "A Uniswap build with substract",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Pacman <jacogr@gmail.com>",
+  "maintainers": [
+    "Jaco Greeff <jacogr@gmail.com>"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@babel/runtime": "^7.5.5",
+    "@polkadot/react-components": "^0.35.0-beta.34"
+  }
+}
