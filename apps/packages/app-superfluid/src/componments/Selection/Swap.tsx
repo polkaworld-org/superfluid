@@ -175,11 +175,12 @@ class Swap extends TxComponent<Props, State> {
     const {outputAsset, inputAsset} = this.state
     let inputRes = await api.query.superfluid.balances([inputAsset, accountId])
     let outputRes = await api.query.superfluid.balances([outputAsset, accountId])
-    this.setState({
-      outputBalance:outputRes,
-      inputBalance:inputRes,
-      
-    })
+    _.delay(() => {
+      this.setState({
+        outputBalance:outputRes,
+        inputBalance:inputRes,
+      })
+    }, 500)
   }
 
   // 获得费率
