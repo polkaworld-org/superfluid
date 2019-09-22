@@ -78,3 +78,8 @@
   top: 16px !important;
   right: 25px !important;
 }
+
+.ui.menu.tabular .item {
+  left: 22% !important;
+  top: 0 !important;
+}
