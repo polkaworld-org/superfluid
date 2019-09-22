@@ -64,6 +64,7 @@ class Pool extends TxComponent<Props, State> {
   };
 
   async componentDidMount() {
+    await this.selectAsset(1)
     const {api} = this.props
     let res = await api.query.superfluid.inherentAsset()
     const inherentAssetId: number = Number(res.toString())
@@ -128,7 +129,7 @@ class Pool extends TxComponent<Props, State> {
                 dropdownClassName='asset-dropdown'
                 value={0}
                 isDisabled={true}
-                onChange={this.selectAsset}
+                // onChange={this.selectAsset}
                 options={options}
               />
             </div>
