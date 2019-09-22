@@ -222,6 +222,8 @@ class Pool extends TxComponent<Props, State> {
                   params={[assetId, inherentAmount, assetAmount, minLiquidity]}
                   tx='superfluid.addLiquidity'
                   ref={this.button}
+                  onSuccess={this.onSuccess}
+
                 /> :
                 <TxButton
                   accountId={accountId}
@@ -230,6 +232,7 @@ class Pool extends TxComponent<Props, State> {
                   params={[assetId, minLiquidity, inherentAmount, assetAmount]}
                   tx='superfluid.removeLiquidity'
                   ref={this.button}
+                  onSuccess={this.onSuccess}
                 />}
             </Button.Group>
 
@@ -255,7 +258,7 @@ class Pool extends TxComponent<Props, State> {
     const {accountId, api} = this.props
     const {inherentAssetId} = this.state
     const res = await api.query.superfluid.accountLiquidities([assetId, accountId])
-
+    
     const addRes = await api.query.superfluid.exchangeAccounts(assetId)
     const address = addRes.toString()
 
@@ -270,6 +273,21 @@ class Pool extends TxComponent<Props, State> {
       poolInherentBalance: poolInherentBalance.toString()
     })
     _.delay(() => this.calcRate('input'), 100)
+  }
+
+  private onSuccess = async (result: any) => {
+    console.log(result, '===============1===============')
+    const {api} = this.props
+    const {inherentAssetId, assetId} = this.state
+    const addRes = await api.query.superfluid.exchangeAccounts(assetId)
+    const address = addRes.toString()
+
+    const poolAssetBalance = await api.query.superfluid.balances([assetId, address])
+    const poolInherentBalance = await api.query.superfluid.balances([inherentAssetId, address])
+    this.setState({
+      poolAssetBalance: poolAssetBalance.toString(),
+      poolInherentBalance: poolInherentBalance.toString()
+    })
   }
 
 
